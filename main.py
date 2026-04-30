@@ -2,12 +2,10 @@
 import os
 import sys
 
-#  Гарантируем, что Python видит пакеты проекта
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
-# Теперь импорты сработают
 from scraper.collector import fetch_books
 from scraper.storage import save_to_csv
 from analysis.analyzer import load_and_clean, get_insights
