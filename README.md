@@ -30,8 +30,8 @@ python main.py
 ```bash
 uvicorn api.main:app --reload --port 8000
 ```
-API доступен по адресу: http://localhost:8000
-Интерактивная документация (Swagger): http://localhost:8000/docs
+API доступен по адресу: http://localhost:8000 [Главная страница](screenshots/Start_page.png).
+Интерактивная документация (Swagger): http://localhost:8000/docs [Swagger](screenshots/Swagger.png).
 
 |Метод|Путь|Описание|Параметры|
 | ----------- | ----------- | ----------- | ----------- |
