@@ -12,4 +12,4 @@ def load_books() -> pd.DataFrame:
     df = pd.read_csv(CSV_PATH)
     df['scraped_at'] = pd.to_datetime(df['scraped_at'])
     # Оставляем только уникальные записи по последней метке времени (опционально)
-    return df.dropna(subset=["price_num", "title"])
+    return df.dropna(subset=["price", "title"])
