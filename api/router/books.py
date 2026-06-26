@@ -21,7 +21,7 @@ def get_books(q: QueryParams = Depends()):
     # Пагинация
     df = df.iloc[q.offset : q.offset + q.limit]
     
-    return df.rename(columns={"price": "price"}).to_dict(orient="records")
+    return df.to_dict(orient="records")
 
 @router.get("/stats", response_model=StatsOut)
 def get_stats():
@@ -29,7 +29,7 @@ def get_stats():
     return {
         "total_books": len(df),
         "avg_price": round(df["price"].mean(), 2),
-        "min_price": df["price"].min(),
-        "max_price": df["price"].max(),
+        "min_price": float(df["price"].min()),
+        "max_price": float(df["price"].max()),
         "last_scraped": df["scraped_at"].max().isoformat()
     }
