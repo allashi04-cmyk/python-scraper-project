@@ -9,7 +9,10 @@ router = APIRouter(prefix="/books", tags=["Books"])
 @router.get("/", response_model=list[BookOut])
 def get_books(q: QueryParams = Depends()):
     df = load_books()
-    
+
+    if not df.empty:
+        df = df.sort_values(by='scraped_at', ascending=False).drop_duplicates(subset=['url'], keep='first')
+        
     # Фильтры
     if q.min_price is not None: df = df[df["price"] >= q.min_price]
     if q.max_price is not None: df = df[df["price"] <= q.max_price]
